@@ -124,8 +124,8 @@ public class MainActivity extends Activity {
             boolean result = rootExec(
                      "mount -o remount,rw /dev/block/stl6 /system\n"
                     +"cp -f /data/data/"+MainActivity.this.getPackageName()+"/files/arp /system/xbin/arp\n"
-                    +"chmod 755 /system/xbin/arp\n"
-                    +"mount -o remount,ro /dev/block/stl6 /system\n");
+                    +"chmod 755 /system/xbin/arp\n");
+                    //+"mount -o remount,ro /dev/block/stl6 /system\n");
             return result;
         }catch (Exception e){
             e.printStackTrace();
@@ -158,6 +158,7 @@ public class MainActivity extends Activity {
             dataOutputStream.close();
             su.waitFor();
             // 一般来说退出值是0，表示执行成功
+            //Log.e("exitValue", ""+su.exitValue());
             if (su.exitValue() == 0){
                 return true;
             }else {
